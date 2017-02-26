@@ -1,0 +1,3 @@
+providerExceptionFilter=org.rembau.dubboTest.filter.ProviderExceptionFilter
+providerLogFilter=org.rembau.dubboTest.filter.ProviderLogFilter
+consumerFilter=org.rembau.dubboTest.filter.ConsumerFilter

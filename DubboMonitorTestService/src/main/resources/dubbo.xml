@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <dubbo:application name="testService" logger="log4j"/>
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.connect}" file="${user.dir}/dubbo/dubbo.cache" />
+    <dubbo:protocol name="dubbo" port="${dubbo.port}"/>
+    <dubbo:provider timeout="${dubbo.provider.timeout}" retries="${dubbo.provider.retries}"  filter="-exception,providerLogFilter,providerExceptionFilter"/>
+    <dubbo:consumer check="false" timeout="30000" filter="consumerFilter" />
+    <dubbo:monitor protocol="registry" />
+</beans>
