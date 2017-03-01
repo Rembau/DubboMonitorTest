@@ -15,5 +15,5 @@
     <dubbo:protocol name="dubbo" port="${dubbo.port}"/>
     <dubbo:provider timeout="${dubbo.provider.timeout}" retries="${dubbo.provider.retries}"  filter="-exception,providerLogFilter,providerExceptionFilter"/>
     <dubbo:consumer check="false" timeout="30000" filter="consumerFilter" />
-    <dubbo:monitor protocol="registry" />
+    <!--<dubbo:monitor protocol="registry" />-->
 </beans>

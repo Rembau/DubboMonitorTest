@@ -11,9 +11,11 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
     
     <dubbo:application name="testClient" />
-    <dubbo:registry protocol="zookeeper" address="${zookeeper.connect}" file="${user.dir}/dubbo/dubbo.cache" />
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.connect}?interval=1000" file="${user.dir}/dubbo/dubbo.cache" />
     <dubbo:protocol name="dubbo" port="${dubbo.port}"/>
     <dubbo:provider timeout="${dubbo.provider.timeout}" retries="${dubbo.provider.retries}"  filter="-exception,providerLogFilter,providerExceptionFilter"/>
     <dubbo:consumer check="false" timeout="30000" filter="consumerFilter" />
+    <!--<dubbo:monitor protocol="registry" />-->
+    <!--<dubbo:monitor protocol="myDubbo" address="myDubbo://127.0.0.1:40001?interval=1000" />-->
     <dubbo:monitor protocol="registry" />
 </beans>

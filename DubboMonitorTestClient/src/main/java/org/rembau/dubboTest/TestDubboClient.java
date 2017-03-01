@@ -1,11 +1,14 @@
 package org.rembau.dubboTest;
 
+import javassist.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 /**
  * Created by rembau on 2017/2/24.
@@ -24,6 +27,27 @@ public class TestDubboClient {
     }
 
     public static void main(String args[]) {
+
+        //        System.setProperty("dubbo.monitor.interval", "1000");
+        ClassPool pool = ClassPool.getDefault();
+        try {
+            CtClass cc = pool.get("com.alibaba.dubbo.config.MonitorConfig");
+            // 增加属性，这里仅仅是增加属性字段
+            CtField ctField = new CtField(CtClass.intType, "interval", cc);
+            ctField.setModifiers(Modifier.PUBLIC);
+            cc.addField(ctField, "1000");
+
+            CtMethod ctMethod = new CtMethod(CtClass.intType, "getInterval", null, cc);
+            ctMethod.setBody("return interval;");
+            ctMethod.setModifiers(Modifier.PUBLIC);
+            cc.addMethod(ctMethod);
+            cc.toClass();
+        } catch (NotFoundException e) {
+            logger.error("", e);
+        } catch (CannotCompileException e) {
+            logger.error("", e);
+        }
+
         new ClassPathXmlApplicationContext("classpath:*.xml");
         logger.info("client start success");
 
