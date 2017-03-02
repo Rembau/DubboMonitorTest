@@ -42,9 +42,7 @@ public class TestDubboClient {
             ctMethod.setModifiers(Modifier.PUBLIC);
             cc.addMethod(ctMethod);
             cc.toClass();
-        } catch (NotFoundException e) {
-            logger.error("", e);
-        } catch (CannotCompileException e) {
+        } catch (NotFoundException | CannotCompileException e) {
             logger.error("", e);
         }
 
