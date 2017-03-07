@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:dubbo="http://code.alibabatech.com/schema/youyue/dubbo"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     	http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://code.alibabatech.com/schema/dubbo
-        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://code.alibabatech.com/schema/youyue/dubbo
+        http://code.alibabatech.com/schema/youyue/dubbo/dubbo.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     
@@ -17,5 +17,5 @@
     <dubbo:consumer check="false" timeout="30000" filter="consumerFilter" />
     <!--<dubbo:monitor protocol="registry" />-->
     <!--<dubbo:monitor protocol="myDubbo" address="myDubbo://127.0.0.1:40001?interval=1000" />-->
-    <dubbo:monitor protocol="registry" />
+    <dubbo:monitor protocol="registry" interval="10000" />
 </beans>
