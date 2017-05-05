@@ -12,6 +12,7 @@
         <module>DubboMonitorTestService</module>
         <module>DubboMonitorTestApi</module>
         <module>DubboMonitorTestClient</module>
+        <module>DubboClientTest</module>
     </modules>
 
     <properties>
