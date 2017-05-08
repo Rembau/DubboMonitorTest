@@ -43,8 +43,14 @@ public class TestDubboClient {
 
         DeviceFilterParam filterParam = new DeviceFilterParam();
         filterParam.setClientType(1);
-        filterParam.setDeviceIdList(new HashSet<String>());
-        filterParam.getDeviceIdList().add("7864e6176fed");
+        //filterParam.setDeviceIdList(new HashSet<String>());
+        //filterParam.getDeviceIdList().add("7864e6176fed");
+
+        /*filterParam.setCityList(new HashSet<String>());
+        filterParam.getCityList().add("上海市");*/
+
+        filterParam.setDeviceModelList(new HashSet<String>());
+        filterParam.getDeviceModelList().add("kqd428lga");
         pushDataDto.setFilterParam(filterParam);
 
         dataPushService.pushMessage(pushDataDto);
